@@ -1,42 +1,102 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.App {
+  font-family: Avenir Next, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-}
+  margin: 2rem;
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+  input {
+    max-width: 15rem;
+    min-width: 15rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  button {
+    background-color: #151e4c;
+    color: #fff;
+    border: 1px solid #151e4c;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+  }
+
+  button:hover {
+    background-color: #fff;
+    color: #151e4c;
+    cursor: pointer;
+  }
+
+  button:active {
+    background-color: #22ac00;
+    color: #fff;
+    border: 1px solid #22ac00;
+  }
+
+  table {
+    font-size: 0.8rem;
+    border-collapse: collapse;
+    border: 1px solid rgb(140 140 140);
+    margin: 2rem;
+    width: 70%;
+  }
+
+  /*caption {*/
+  /*  caption-side: bottom;*/
+  /*  padding: 10px;*/
+  /*  font-weight: bold;*/
+  /*}*/
+
+  thead {
+    background-color: rgb(145, 145, 145);
+    color: #ffffff;
+    border: 0;
+  }
+
+  th,
+  td {
+    border: 1px solid rgb(160 160 160);
+    padding: 8px 10px;
+  }
+
+  td:first-of-type {
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    min-width: 18rem;
+    text-overflow: ellipsis;
+  }
+
+  td:nth-of-type(3) {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    min-width: 5rem;
+    text-overflow: ellipsis;
+  }
+
+  td:nth-of-type(4) {
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 25rem;
+    text-overflow: ellipsis;
+  }
+
+  tbody > tr:nth-of-type(even) {
+    background-color: rgb(237 238 242);
+  }
+
+  tr.highlight {
+    animation: flash 0.5s cubic-bezier(0.5, 0, 1, 1) 3;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes flash {
+  50% {
+    background-color: #33ff57;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
