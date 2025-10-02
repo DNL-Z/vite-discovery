@@ -1,69 +1,64 @@
-# React + TypeScript + Vite
+# 🔍 GitHub Repository Search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A tiny web app to search and explore GitHub repositories in real-time.
 
-Currently, two official plugins are available:
+## ✨ Overview
+- Search GitHub repositories by name
+- Shows: full name, stars, last update, description (as tooltip), language
+- Basic loading/error states
+- 100% client-side via GitHub Public API (no auth)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧰 Tech Stack
+- React 19
+- TypeScript
+- Vite 7
+- Tailwind CSS
+- ESLint
+- Prettier
 
-## Expanding the ESLint configuration
+## ⚙️ Requirements
+- Node.js: confirms a minimum version (recent LTS compatible with Vite 7)
+- pnpm globally (recommended)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ▶️ Quick Start
+1) Install dependencies
+   - pnpm: `pnpm install`
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2) Start the dev server
+   - `pnpm run dev`
+   - Typical local URL: http://localhost:5173
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+3) Production build → `pnpm run build`
+4) Preview build → `pnpm run preview`
+5) Lint project → `pnpm run lint`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+## 📜 Scripts (package.json)
+- `dev`: start Vite
+- `build`: type-check (`tsc -b`) then Vite build
+- `lint`: ESLint
+- `preview`: preview the build
+- TODO: add `format` (e.g., `npx prettier . --write`)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔐 Environment Variables
+- None required
+- TODO: optional `GITHUB_TOKEN` support to raise rate limits (Authorization header)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+## 🗂 Quick Structure
+- `index.html` → loads `src/main.tsx`
+- `src/main.tsx` → bootstraps React + global styles
+- `src/App.tsx` → main UI
+- `src/services/fetchData.tsx` → GitHub API requests
+- `src/styles/` → Tailwind + app styles
+- `vite.config.ts` → Vite config (React + Tailwind, `@` alias)
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+## 🧪 Tests
+- No testing framework configured
+- TODO: add Vitest + Testing Library and a CI workflow
+
+## 🌐 GitHub API Notes
+- `GET https://api.github.com/search/repositories?q=<query>&page=<page>&per_page=10`
+- Rate limits apply to unauthenticated requests
+- TODO: UX: format `updated_at`, highlight the most-starred row, pagination, color by language
+
+## 📄 License
+- License file present: see `LICENSE.txt`
