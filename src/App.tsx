@@ -4,12 +4,12 @@ import { type ChangeEvent, useState } from 'react';
 
 import { fetchData } from '@/services/fetchData';
 
-// Steps
-// Call the GitHub API and display the results
-// Highlight the line with the highest star count
-// Show updated_at as elapsed time
-// Implement pagination behavior
-// Assign a distinct color to each language
+// Steps:
+// - Call the GitHub API and display the results ✅
+// - Highlight the line with the highest star count ✅
+// - Show updated_at as elapsed time
+// - Implement pagination behavior
+// - Assign a distinct color to each language
 
 export default function App() {
   const [items, setItems] = useState<
@@ -48,6 +48,10 @@ export default function App() {
 
   console.log('items =>', items);
 
+  const highlightRepository = Math.max(...items.map((item) => item.stargazers_count));
+
+  console.log('highlightRepository =>', highlightRepository);
+
   return (
     <div className="App">
       <h1>GitHub Repository Search</h1>
@@ -80,7 +84,10 @@ export default function App() {
           </thead>
           <tbody>
             {items.map((item) => (
-              <tr key={item.full_name}>
+              <tr
+                key={item.full_name}
+                className={item.stargazers_count === highlightRepository ? 'highlight' : ''}
+              >
                 <td>{item.full_name}</td>
                 <td>{item.stargazers_count}</td>
                 <td>{item.updated_at}</td>
