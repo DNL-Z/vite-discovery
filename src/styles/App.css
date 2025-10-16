@@ -55,6 +55,11 @@
     border: 1px solid #22ac00;
   }
 
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   table {
     font-size: 0.8rem;
     border-collapse: collapse;
